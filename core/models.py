@@ -28,11 +28,18 @@ class Customer(models.Model):
 
 
 class Product(models.Model):
+	LIFECYCLE_CHOICES = (
+		('Stable', 'Estável'),
+		('Viral', 'Viral'),
+		('Obsolete', 'Obsoleto'),
+	)
+	
 	name = models.CharField("Nome", max_length=100)
 	category = models.CharField("Categoria", max_length=50)
 	brand = models.CharField("Marca", max_length=50)
 	cost = models.DecimalField("Custo", max_digits=10, decimal_places=2)
 	suggested_price = models.DecimalField("Preço Sugerido", max_digits=10, decimal_places=2)
+	lifecycle = models.CharField("Ciclo de Vida", max_length=20, choices=LIFECYCLE_CHOICES, default='Stable')
 
 	class Meta:
 		verbose_name = "Produto"

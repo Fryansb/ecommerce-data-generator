@@ -8,3 +8,9 @@ factory_boy
 pandas
 tqdm
 configobj==5.0.8
+redis
+psycopg2-binary
+streamlit
+sqlalchemy
+plotly
+scikit-learn

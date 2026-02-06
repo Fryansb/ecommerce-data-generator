@@ -44,6 +44,16 @@ services:
         condition: service_healthy
     volumes:
       - superset_home:/app/superset_home
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 volumes:
   pgdata:
   superset_home:
